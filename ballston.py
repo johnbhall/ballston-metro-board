@@ -10,6 +10,11 @@ segment1 = SevenSegment(address=0x71)
 segment2 = SevenSegment(address=0x72)
 segment3 = SevenSegment(address=0x73)
 
+segment0.disp.setBrightness(1)
+segment1.disp.setBrightness(1)
+segment2.disp.setBrightness(1)
+segment3.disp.setBrightness(1)
+
 # K04 is Ballston station
 STATION_ID = "K04"
 API_KEY = "< YOUR API KEY HERE >"
