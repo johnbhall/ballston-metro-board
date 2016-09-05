@@ -4,6 +4,8 @@ import urllib2
 import json
 
 REFRESH_INTERVAL = 20
+SPACE = 0
+DASH = 64
 
 segment0 = SevenSegment(address=0x70)
 segment1 = SevenSegment(address=0x71)
@@ -33,17 +35,20 @@ def train_predictions():
     }
     for t in trains:
         if t["Group"] == "2" and t["Line"] == "OR":
-            train_predictions["customink"].append( minutes_for_train(t["Min"]) )
+            train_predictions["customink"].append( char_for_train(t["Min"]) )
         elif t["Group"] == "1":
-            train_predictions["downtown"].append( minutes_for_train(t["Min"]) )
+            train_predictions["downtown"].append( char_for_train(t["Min"]) )
     return train_predictions
 
-# convert a string to integer. Return 0 for "ARR" and "BRD" and "---"
-def minutes_for_train(str):
+# string/integer to display for train. Return 0 for "ARR" and "BRD". Return "--" for "---" and ""
+def char_for_train(str):
     try:
         mins = int(str)
     except:
-        mins = 0
+        if str == "ARR" or str == "BRD":
+            mins = 0
+        else:
+            mins = "--"
     return mins
 
 # 8-character string that will be used to update a row of LEDs
@@ -60,7 +65,9 @@ def update_segment(segment, str):
         if index > 1:
             i = index + 1
         if char == " ":
-            segment.writeDigitRaw(i, 0)
+            segment.writeDigitRaw(i, SPACE)
+        elif char == "-":
+            segment.writeDigitRaw(i, DASH)
         else:
             segment.writeDigit(i, int(char))
 
