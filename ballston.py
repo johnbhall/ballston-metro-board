@@ -71,6 +71,28 @@ def update_segment(segment, str):
         else:
             segment.writeDigit(i, int(char))
 
+def display_dashes():
+    segment0.writeDigitRaw(0,DASH)
+    segment0.writeDigitRaw(1,DASH)
+
+    segment0.writeDigitRaw(4,DASH)
+    segment1.writeDigitRaw(0,DASH)
+
+    segment1.writeDigitRaw(3,DASH)
+    segment1.writeDigitRaw(4,DASH)
+
+    segment2.writeDigitRaw(0,DASH)
+    segment2.writeDigitRaw(1,DASH)
+
+    segment2.writeDigitRaw(4,DASH)
+    segment3.writeDigitRaw(0,DASH)
+
+    segment3.writeDigitRaw(3,DASH)
+    segment3.writeDigitRaw(4,DASH)
+
+
+display_dashes()
+
 while(True):
     predictions = train_predictions()
     
