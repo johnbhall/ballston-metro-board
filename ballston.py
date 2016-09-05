@@ -94,8 +94,12 @@ def display_dashes():
 display_dashes()
 
 while(True):
-    predictions = train_predictions()
-    
+    try:
+        predictions = train_predictions()
+    except:
+        display_dashes()
+        continue
+
     customink_str = output_string(predictions["customink"])
     downtown_str = output_string(predictions["downtown"])
     
