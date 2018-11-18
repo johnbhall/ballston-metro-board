@@ -3,6 +3,7 @@ import time
 from Adafruit_7Segment import SevenSegment
 import urllib2
 import json
+import subprocess
 
 REFRESH_INTERVAL = 20
 SPACE = 0
@@ -96,9 +97,15 @@ display_dashes()
 
 while(True):
     try:
+        print "fetching predictions"
+        segment1.writeDigitRaw(4,65)
         predictions = train_predictions()
     except:
+        print "error while fetching predictions"
         display_dashes()
+        subprocess.call(['./wifi_rebooter.sh'])
+        time.sleep(REFRESH_INTERVAL)
+        print "continuing"
         continue
 
     customink_str = output_string(predictions["customink"])
