@@ -92,8 +92,26 @@ def display_dashes():
     segment3.writeDigitRaw(3,DASH)
     segment3.writeDigitRaw(4,DASH)
 
+def display_zeros():
+    segment0.writeDigit(0,0)
+    segment0.writeDigit(1,0)
 
-display_dashes()
+    segment0.writeDigit(4,0)
+    segment1.writeDigit(0,0)
+
+    segment1.writeDigit(3,0)
+    segment1.writeDigit(4,0)
+
+    segment2.writeDigit(0,0)
+    segment2.writeDigit(1,0)
+
+    segment2.writeDigit(4,0)
+    segment3.writeDigit(0,0)
+
+    segment3.writeDigit(3,0)
+    segment3.writeDigit(4,0)
+
+display_zeros()
 
 while(True):
     try:
