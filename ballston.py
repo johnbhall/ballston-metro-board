@@ -1,3 +1,4 @@
+import config
 import time
 from Adafruit_7Segment import SevenSegment
 import urllib2
@@ -19,7 +20,7 @@ segment3.disp.setBrightness(1)
 
 # K04 is Ballston station
 STATION_ID = "K04"
-API_KEY = "< YOUR API KEY HERE >"
+API_KEY = config.api_key
 prediction_url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction"
 
 print "Press CTRL+Z to exit"
