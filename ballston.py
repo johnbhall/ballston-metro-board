@@ -112,6 +112,7 @@ def display_zeros():
     segment3.writeDigit(4,0)
 
 display_zeros()
+time.sleep(2)
 
 while(True):
     try:
